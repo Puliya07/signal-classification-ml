@@ -8,11 +8,11 @@ def extract_time_domain_features(signals):
 
     for s in signals:
         # stat features
-        mean = np.mean(s)
-        std = np.std(s)
-        rms = np.sqrt(np.mean(s**2))
-        peak = np.max(np.abs(s))
-        crest_factor = peak / rms if rms > 0 else 0
+        mean = np.mean(s)  
+        std = np.std(s)      
+        rms = np.sqrt(np.mean(s**2))    
+        peak = np.max(np.abs(s))        
+        crest_factor = peak / rms if rms > 0 else 0     
 
         # zero crossings
         zero_crossings = np.sum(np.diff(np.signbit(s)))
