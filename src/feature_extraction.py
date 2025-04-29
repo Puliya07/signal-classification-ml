@@ -36,7 +36,7 @@ def extract_frequency_domain_features(signals, sampling_rate = 1000):
 
         # dominant frequency
         if len(spectrum) > 0:
-            dominant_freq = freqs[np.argamx(spectrum)]
+            dominant_freq = freqs[np.argmax(spectrum)]
         else:
             dominant_freq = 0
 

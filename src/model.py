@@ -42,7 +42,7 @@ def train_svm(X_train, y_train):
     param_grid = {
         'C': [0.1, 1, 10, 100],
         'gamma': ['scale', 'auto', 0.1, 0.01],
-        'kernal': ['rbf', 'poly', 'sigmoid']
+        'kernel': ['rbf', 'poly', 'sigmoid']
     }
 
     svm = SVC(random_state=42, probability=True)
@@ -61,7 +61,7 @@ def train_neural_network(X_train, y_train):
         'learning_rate': ['constant', 'adaptive']
     }
 
-    nn = MLPClassifier(random_state=42, max_iter=1000)
+    nn = MLPClassifier(random_state=42, max_iter=3000)
     grid_search = GridSearchCV(nn, param_grid, cv=5, scoring='accuracy')
     grid_search.fit(X_train, y_train)
 
@@ -80,7 +80,7 @@ def evaluate_model(model, X_test, y_test, class_names=None):
 
     return y_pred
 
-def save_model(model, scalar, model_path, scaler_path):
+def save_model(model, scaler, model_path, scaler_path):
     """Save trained model and scaler."""
     os.makedirs(os.path.dirname(model_path), exist_ok=True)
     joblib.dump(model, model_path)
